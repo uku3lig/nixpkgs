@@ -19,6 +19,7 @@
 , libinput
 , libstartup_notification
 , libwacom
+, libxcvt
 , libXdamage
 , libxkbcommon
 , libXtst
@@ -32,7 +33,6 @@
 , wrapGAppsHook
 , xorgserver
 , xwayland
-, libxcvt
 }:
 
 stdenv.mkDerivation rec {
@@ -75,12 +75,12 @@ stdenv.mkDerivation rec {
     gtk3
     libcanberra
     libdrm
-    libxcvt
     libgnomekbd
     libgudev
     libinput
     libstartup_notification
     libwacom
+    libxcvt
     libXdamage
     libxkbcommon
     pipewire
