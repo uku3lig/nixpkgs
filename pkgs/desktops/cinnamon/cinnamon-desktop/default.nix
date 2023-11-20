@@ -10,11 +10,11 @@
 , python3
 , lib
 , stdenv
+, systemd
 , xkeyboard_config
 , xorg
 , wrapGAppsHook
 , glib
-, systemd
 }:
 
 stdenv.mkDerivation rec {
@@ -38,11 +38,11 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     gdk-pixbuf
+    systemd
     xkeyboard_config
     xorg.libxkbfile
     xorg.libXext
     xorg.libXrandr
-    systemd
   ];
 
   nativeBuildInputs = [
