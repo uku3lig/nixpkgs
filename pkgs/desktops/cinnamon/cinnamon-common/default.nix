@@ -160,7 +160,6 @@ stdenv.mkDerivation rec {
 
     pushd ./files/usr/share/cinnamon/cinnamon-settings
       substituteInPlace ./bin/capi.py                     --replace '"/usr/lib"' '"${cinnamon-control-center}/lib"'
-      substituteInPlace ./bin/CinnamonGtkSettings.py      --replace "'python3'" "'${pythonEnv.interpreter}'"
       substituteInPlace ./bin/SettingsWidgets.py          --replace "/usr/share/sounds" "/run/current-system/sw/share/sounds"
       substituteInPlace ./bin/Spices.py                   --replace "msgfmt" "${gettext}/bin/msgfmt"
       substituteInPlace ./modules/cs_info.py              --replace "lspci" "${pciutils}/bin/lspci"
