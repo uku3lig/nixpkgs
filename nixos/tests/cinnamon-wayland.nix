@@ -42,7 +42,7 @@ import ./make-test-python.nix ({ pkgs, lib, ... }: {
           machine.wait_until_succeeds("${eval "Main.runState"} | grep -q 'true,..2'")
 
       with subtest("Check if Cinnamon components actually start"):
-          for i in ["csd-media-keys", "xapp-sn-watcher"]:
+          for i in ["csd-media-keys", "xapp-sn-watcher", "nemo-desktop"]:
             machine.wait_until_succeeds(f"pgrep -f {i}")
           machine.wait_until_succeeds("journalctl -b --grep 'Loaded applet menu@cinnamon.org'")
           machine.wait_until_succeeds("journalctl -b --grep 'calendar@cinnamon.org: Calendar events supported'")
