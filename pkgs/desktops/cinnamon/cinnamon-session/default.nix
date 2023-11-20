@@ -47,6 +47,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     # meson.build
+    cinnamon-desktop
     gtk3
     glib
     libcanberra
@@ -64,8 +65,6 @@ stdenv.mkDerivation rec {
     xorg.xtrans
 
     # other (not meson.build)
-
-    cinnamon-desktop
     cinnamon-settings-daemon
     dbus-glib
     glib
