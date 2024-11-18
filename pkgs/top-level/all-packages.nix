@@ -14256,6 +14256,8 @@ with pkgs;
     inherit (darwin.apple_sdk.frameworks) AppKit Cocoa;
   };
 
+  gimp_3 = callPackage ../applications/graphics/gimp/3.nix {};
+
   gimp-with-plugins = callPackage ../applications/graphics/gimp/wrapper.nix {
     plugins = null; # All packaged plugins enabled, if not explicit plugin list supplied
   };
