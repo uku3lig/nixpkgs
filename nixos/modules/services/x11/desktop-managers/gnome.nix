@@ -19,14 +19,7 @@ let
   serviceCfg = config.services.gnome;
 
   # Prioritize nautilus by default when opening directories
-  mimeAppsList = pkgs.writeTextFile {
-    name = "gnome-mimeapps";
-    destination = "/share/applications/mimeapps.list";
-    text = ''
-      [Default Applications]
-      inode/directory=nautilus.desktop;org.gnome.Nautilus.desktop
-    '';
-  };
+  mimeAppsList = pkgs.gnome-mimeapps;
 
   defaultFavoriteAppsOverride = ''
     [org.gnome.shell]
