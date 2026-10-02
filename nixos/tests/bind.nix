@@ -7,7 +7,7 @@
 let
   zones = lib.singleton {
     name = ".";
-    master = true;
+    primary = true;
     file = pkgs.writeText "root.zone" ''
       $TTL 3600
       . IN SOA ns.example.org. admin.example.org. ( 1 3h 1h 1w 1d )

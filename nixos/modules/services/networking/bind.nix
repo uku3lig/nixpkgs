@@ -32,25 +32,31 @@ let
   bindZoneOptions =
     { name, config, ... }:
     {
+      imports = [
+        (lib.mkRenamedOptionModule [ "master" ] [ "primary" ])
+        (lib.mkRenamedOptionModule [ "masters" ] [ "primaryZones" ])
+        (lib.mkRenamedOptionModule [ "slaves" ] [ "secondaryZones" ])
+      ];
+
       options = {
         name = lib.mkOption {
           type = lib.types.str;
           default = name;
           description = "Name of the zone.";
         };
-        master = lib.mkOption {
-          description = "Master=false means slave server";
+        primary = lib.mkOption {
+          description = "Primary=false means secondary server";
           type = lib.types.bool;
         };
         file = lib.mkOption {
           type = lib.types.either lib.types.str lib.types.path;
           description = "Zone file resource records contain columns of data, separated by whitespace, that define the record.";
         };
-        masters = lib.mkOption {
+        primaryZones = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           description = "List of servers for inclusion in stub and secondary zones.";
         };
-        slaves = lib.mkOption {
+        secondaryZones = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           description = "Addresses who may request zone transfers.";
           default = [ ];
@@ -129,27 +135,27 @@ let
         {
           name,
           file,
-          master ? true,
-          slaves ? [ ],
-          masters ? [ ],
+          primary ? true,
+          secondaryZones ? [ ],
+          primaryZones ? [ ],
           allowQuery ? [ ],
           extraConfig ? "",
         }:
         ''
           zone "${name}" {
-            type ${if master then "master" else "slave"};
+            type ${if primary then "primary" else "secondary"};
             file "${file}";
             ${
-              if master then
+              if primary then
                 ''
                   allow-transfer {
-                    ${lib.concatMapStrings (ip: "${ip};\n") slaves}
+                    ${lib.concatMapStrings (ip: "${ip};\n") secondaryZones}
                   };
                 ''
               else
                 ''
-                  masters {
-                    ${lib.concatMapStrings (ip: "${ip};\n") masters}
+                  primaries {
+                    ${lib.concatMapStrings (ip: "${ip};\n") primaryZones}
                   };
                 ''
             }
@@ -275,10 +281,10 @@ in
         '';
         example = {
           "example.com" = {
-            master = false;
+            primary = false;
             file = "/var/dns/example.com";
-            masters = [ "192.168.0.1" ];
-            slaves = [ ];
+            primaryZones = [ "192.168.0.1" ];
+            secondaryZones = [ ];
             extraConfig = "";
           };
         };
