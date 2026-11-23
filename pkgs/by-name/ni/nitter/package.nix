@@ -1,59 +1,54 @@
 {
   lib,
   buildNimPackage,
-  fetchFromGitHub,
+  fetchFromCodeberg,
   nixosTests,
-  replaceVars,
   unstableGitUpdater,
 }:
 
-buildNimPackage (
-  finalAttrs: prevAttrs: {
-    pname = "nitter";
-    version = "0-unstable-2026-07-11";
+buildNimPackage (finalAttrs: {
+  pname = "nitter";
+  version = "0-unstable-2026-11-23";
 
-    src = fetchFromGitHub {
-      owner = "zedeus";
-      repo = "nitter";
-      rev = "3bc78801b39f0a98f1a424da3f60c4aa60c7025a";
-      hash = "sha256-v+1IkabSbSOf05eAAcw0bPqaujbLtsnDhQZOR1lHAyg=";
-    };
+  src = fetchFromCodeberg {
+    owner = "shitter";
+    repo = "shitter";
+    rev = "40b264a103a03c0298b51d43a44db3286cad4d5d";
+    hash = "sha256-1qK1ibZfmGk/ORC6hck9+ndRL6ThFhVtl1/oFyaj1FI=";
+  };
 
-    lockFile = ./lock.json;
+  lockFile = ./lock.json;
 
-    patches = [
-      (replaceVars ./nitter-version.patch {
-        inherit (finalAttrs) version;
-        inherit (finalAttrs.src) rev;
-        url = builtins.replaceStrings [ "archive" ".tar.gz" ] [ "commit" "" ] finalAttrs.src.url;
-      })
+  patches = [ ./0001-fix-move-away-from-pcre.patch ];
+
+  nimFlags = [
+    "-d:gitHash=${finalAttrs.src.rev}"
+    "-d:gitDate=1970-01-01"
+  ];
+
+  postBuild = ''
+    nim compile ${toString finalAttrs.nimFlags} -r tools/gencss
+    nim compile ${toString finalAttrs.nimFlags} -r tools/rendermd
+  '';
+
+  postInstall = ''
+    mkdir -p $out/share/nitter
+    cp -r public $out/share/nitter/public
+  '';
+
+  passthru = {
+    tests = { inherit (nixosTests) nitter; };
+    updateScript = unstableGitUpdater { };
+  };
+
+  meta = {
+    homepage = "https://github.com/zedeus/nitter";
+    description = "Alternative Twitter front-end";
+    license = lib.licenses.agpl3Only;
+    maintainers = with lib.maintainers; [
+      erdnaxe
+      infinidoge
     ];
-
-    postBuild = ''
-      nim compile ${toString finalAttrs.nimFlags} -r tools/gencss
-      nim compile ${toString finalAttrs.nimFlags} -r tools/rendermd
-    '';
-
-    postInstall = ''
-      mkdir -p $out/share/nitter
-      cp -r public $out/share/nitter/public
-    '';
-
-    passthru = {
-      tests = { inherit (nixosTests) nitter; };
-      updateScript = unstableGitUpdater { };
-    };
-
-    meta = {
-      broken = true; # requires pcre support, but nim only supports pcre v1
-      homepage = "https://github.com/zedeus/nitter";
-      description = "Alternative Twitter front-end";
-      license = lib.licenses.agpl3Only;
-      maintainers = with lib.maintainers; [
-        erdnaxe
-        infinidoge
-      ];
-      mainProgram = "nitter";
-    };
-  }
-)
+    mainProgram = "nitter";
+  };
+})

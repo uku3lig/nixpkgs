@@ -5,12 +5,46 @@
       "packages": [
         "jester"
       ],
-      "path": "/nix/store/4dxbw27sjzks7j13gdbprhskmdjylscg-source",
-      "ref": "v0.6.0",
-      "rev": "2dfac077170c62cd6ffc73e3dcfa29d29c641dcf",
-      "sha256": "0d35mbx1bgjfmrv8j1qph56law74wzjp3qvr2d0qj9x9d1cddz0p",
+      "path": "/nix/store/dfryff87ql88k6sy7f82qbi45hikc9jf-source",
+      "rev": "nitely-regex",
+      "sha256": "0rdkxaw8m5vjr4vpmvkqf01xd3dxkmgdyg21fh1lr2g4x62b0fc4",
       "srcDir": "",
-      "url": "https://github.com/dom96/jester/archive/2dfac077170c62cd6ffc73e3dcfa29d29c641dcf.tar.gz"
+      "url": "https://github.com/eveeifyeve/jester/archive/nitely-regex.tar.gz"
+    },
+    {
+      "method": "fetchzip",
+      "packages": [
+        "markdown"
+      ],
+      "path": "/nix/store/qlviibclsw5fchbgzv8gg3li9ww3nh74-source",
+      "rev": "regex-compat",
+      "sha256": "10aiwpd09j6wn8vrw9mr1jp5h1gpc136s7gafb740k41mls9rl8a",
+      "srcDir": "src",
+      "url": "https://github.com/uku3lig/nim-markdown/archive/regex-compat.tar.gz"
+    },
+    {
+      "method": "fetchzip",
+      "packages": [
+        "regex"
+      ],
+      "path": "/nix/store/dzsl7qv2lrbyffyfd03p8vc39xhz2ch7-source",
+      "ref": "v0.27.0",
+      "rev": "a0f1df6a6512340df9ababe59f55140c94a2200f",
+      "sha256": "18clc7v14cyw12kfcv70nbsahyf5a64v4ryjc3sjzlhwiz54yah9",
+      "srcDir": "src",
+      "url": "https://github.com/nitely/nim-regex/archive/a0f1df6a6512340df9ababe59f55140c94a2200f.tar.gz"
+    },
+    {
+      "method": "fetchzip",
+      "packages": [
+        "httpbeast"
+      ],
+      "path": "/nix/store/hx85br48sjcridmda4l35cx7c9imxabg-source",
+      "ref": "v0.4.1",
+      "rev": "abc13d11c210b614960fe8760e581d44cfb2e3e9",
+      "sha256": "1x12ypfj341gjg3rh7zjq1wns8rngfyky6gqgb92lyhlvs7h4xzj",
+      "srcDir": "src",
+      "url": "https://github.com/dom96/httpbeast/archive/abc13d11c210b614960fe8760e581d44cfb2e3e9.tar.gz"
     },
     {
       "method": "fetchzip",
@@ -42,23 +76,23 @@
         "nimcrypto"
       ],
       "path": "/nix/store/f2xp1v0vnplwfjnk8nqsi7gd9pnb9gcv-source",
-      "ref": "v0.7.3^{}",
-      "rev": "b3dbc9c4d08e58c5b7bfad6dc7ef2ee52f2f4c08",
+      "ref": "v0.7.3",
+      "rev": "e2d05807e9df5e72a90eec168d078e6eceac87ed",
       "sha256": "1v4rz42lwcazs6isi3kmjylkisr84mh0kgmlqycx4i885dn3g0l4",
       "srcDir": "",
-      "url": "https://github.com/cheatfate/nimcrypto/archive/b3dbc9c4d08e58c5b7bfad6dc7ef2ee52f2f4c08.tar.gz"
+      "url": "https://github.com/cheatfate/nimcrypto/archive/e2d05807e9df5e72a90eec168d078e6eceac87ed.tar.gz"
     },
     {
       "method": "fetchzip",
       "packages": [
-        "markdown"
+        "htmlparser"
       ],
-      "path": "/nix/store/3ha9jx6zafxb338r5xi1bydxnjsjppl5-source",
-      "ref": "v0.8.8",
-      "rev": "5a7a7bafd1da23b25332316a7b888e6586f4177a",
-      "sha256": "10b3jmq9dhyfkj3r0jwk9zigrn048jb7xwh7vkbqar5wgfgmqljr",
+      "path": "/nix/store/sv8ydzdf509akbm3b93qlppklgvlx40x-source",
+      "ref": "v0.1.0",
+      "rev": "5ffa3021d78e79f18482192548b8bd835002f7ab",
+      "sha256": "0h3nxnjclqd1gn9q3p9lad4i6ypwdisnbqj6rafm9155ydkc724v",
       "srcDir": "src",
-      "url": "https://github.com/soasme/nim-markdown/archive/5a7a7bafd1da23b25332316a7b888e6586f4177a.tar.gz"
+      "url": "https://github.com/nim-lang/htmlparser/archive/5ffa3021d78e79f18482192548b8bd835002f7ab.tar.gz"
     },
     {
       "method": "fetchzip",
@@ -148,7 +182,7 @@
       "packages": [
         "oauth"
       ],
-      "path": "/nix/store/bqfq4db6nwycmkdrql9igsbrayqsw3g2-source",
+      "path": "/nix/store/3q8x25ivdpb0j406qr28wbrknwp3kj1v-source",
       "ref": "v0.11",
       "rev": "ec2e058fc46f04deaf3cb55eca32b3b83c614953",
       "sha256": "1wv8v4xid64z0wbb814n31gf3c6dzlqr3b83b5ls0kqby73krlsm",
@@ -158,14 +192,25 @@
     {
       "method": "fetchzip",
       "packages": [
-        "httpbeast"
+        "unicodedb"
       ],
-      "path": "/nix/store/hx85br48sjcridmda4l35cx7c9imxabg-source",
-      "ref": "v0.4.1",
-      "rev": "abc13d11c210b614960fe8760e581d44cfb2e3e9",
-      "sha256": "1x12ypfj341gjg3rh7zjq1wns8rngfyky6gqgb92lyhlvs7h4xzj",
+      "path": "/nix/store/gxdmxzyyhmfyvybmhq6g1b1wgs7iy7an-source",
+      "ref": "v0.14.1",
+      "rev": "b70aac15a3fdc7647997bd6cd10bccd8b2c00e54",
+      "sha256": "00z5z1m14gw266ld7yy3gvnm08d1kgij66cg4h76yllkc1k1xk0s",
       "srcDir": "src",
-      "url": "https://github.com/dom96/httpbeast/archive/abc13d11c210b614960fe8760e581d44cfb2e3e9.tar.gz"
+      "url": "https://github.com/nitely/nim-unicodedb/archive/b70aac15a3fdc7647997bd6cd10bccd8b2c00e54.tar.gz"
+    },
+    {
+      "method": "fetchzip",
+      "packages": [
+        "asynctools"
+      ],
+      "path": "/nix/store/qdiiihi53gmbwbj06qa16p8qpks9lvw7-source",
+      "rev": "0e6bdc3ed5bae8c7cc9",
+      "sha256": "111dzyvqlg1r1jngcz3d9px8kfbxpcdi8phs26bxkmbxzjkwrmmv",
+      "srcDir": "",
+      "url": "https://github.com/cheatfate/asynctools/archive/0e6bdc3ed5bae8c7cc9.tar.gz"
     },
     {
       "method": "fetchzip",
@@ -202,17 +247,6 @@
       "sha256": "00zvvd8ssy22srg74xzapknmgmi82v534npjdrk5805shswfhqdm",
       "srcDir": "",
       "url": "https://github.com/onionhammer/sha1/archive/92ccc5800bb0ac4865b275a2ce3c1544e98b48bc.tar.gz"
-    },
-    {
-      "method": "fetchzip",
-      "packages": [
-        "asynctools"
-      ],
-      "path": "/nix/store/qdiiihi53gmbwbj06qa16p8qpks9lvw7-source",
-      "rev": "0e6bdc3ed5bae8c7cc9",
-      "sha256": "111dzyvqlg1r1jngcz3d9px8kfbxpcdi8phs26bxkmbxzjkwrmmv",
-      "srcDir": "",
-      "url": "https://github.com/cheatfate/asynctools/archive/0e6bdc3ed5bae8c7cc9.tar.gz"
     }
   ]
 }
